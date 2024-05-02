@@ -1,0 +1,6 @@
+Nat => Nat
+intro n
+elim n 
+intro Zero
+exact Zero
+exact x_n

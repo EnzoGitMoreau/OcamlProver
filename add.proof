@@ -1,0 +1,7 @@
+Nat => Nat => Nat
+intro n
+intro m
+elim n
+exact m
+intro y_n
+exact y_n 

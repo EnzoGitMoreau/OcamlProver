@@ -1,0 +1,20 @@
+define sadd = fun(x: Nat) -> fun( y : Nat) -> S y
+define add = fun(n:Nat) -> fun (m: Nat) -> Ind p m sadd n 
+define p = fun(x:Nat)->fun(y:Nat)-> Eq x y => Eq S(x) S(y)
+define test =  fun(x:(Refl x)) -> Refl S(x)
+define r = J p test x x Refl x
+define Seq = fun(x : Nat) -> fun(y : Nat) -> fun(e : Eq x y) -> (J p test x y e)
+eval Seq
+type Seq
+check Seq = Pi (x : Nat) -> Pi (y : Nat) -> Pi (e : Eq x y) -> Eq (S x) (S y)
+define pz = fun(x:Nat)->fun(y:Nat) -> Eq x y => Eq (add x Z) y
+define rz = Refl(x)=>Eq(add x Z)(x)
+define max = fun(x : Nat) -> fun(y : Nat) -> fun(e : Eq x y) -> (J pz rz x y e)
+define x = add Z Z 
+eval x
+define padd = Nat => Eq (add Z n) n
+define zadd = Eq (add Z Z ) Z
+define s = fun(n:Nat) -> Seq (add Z n) n
+define tmmm = fun(n:Nat) -> Ind padd zadd s n
+eval tmmm S(S(S(Z)))
+

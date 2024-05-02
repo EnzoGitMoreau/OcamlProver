@@ -1,0 +1,8 @@
+(A /\ B => C) => A => B => C
+intro x
+intro b 
+intro c 
+elim x 
+intro 
+exact c 
+exact b 

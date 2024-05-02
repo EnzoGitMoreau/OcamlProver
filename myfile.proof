@@ -1,0 +1,10 @@
+define p = fun(x:Nat)->Nat
+define z = Z
+define s = fun(x:Nat) -> fun(n:Nat) -> x
+define test = Ind p z s S(S(Z))
+define pred = fun( n : Nat ) ->(Ind p z s n)
+eval pred S(S(Z))
+define sadd = fun(x: Nat) -> fun( y : Nat) -> S y
+define test2 = fun(n:Nat) -> fun (m: Nat) -> Ind p m sadd n 
+eval test2 S(Z) S(Z)
+eval Ind p S(S(Z)) sadd S(S(Z))
